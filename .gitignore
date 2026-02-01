@@ -1,0 +1,17 @@
+# Editor and OS
+.idea/
+.vscode/
+Thumbs.db
+desktop.ini
+
+# Build / cache
+__pycache__/
+*.pyc
+
+# Environment files
+.env
+env/*.env
+
+# Docker
+docker-compose.override.yml
+*.log
