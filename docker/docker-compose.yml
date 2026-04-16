@@ -1,10 +1,6 @@
-version: "3.8"
 services:
   flyway:
-    image: flyway/flyway:9
+    image: flyway:rel-1.1.1.1
     env_file:
       - ../env/dev.env
-    command: -url=jdbc:oracle:thin:@//${ORACLE_HOST}:${ORACLE_PORT}/${ORACLE_SID} -user=${ORACLE_USER} -password=${ORACLE_PASSWORD} migrate
-    volumes:
-      - ../flyway/sql:/flyway/sql
-      - ../flyway/conf:/flyway/conf
+    command: migrate
