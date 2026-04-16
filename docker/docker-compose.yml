@@ -2,5 +2,5 @@ services:
   flyway:
     image: flyway:${TAG}
     env_file:
-      - D:\Oracle_flyway\oracle-flyway\env
+      - D:\Oracle_flyway\oracle-flyway\env\dev.env
     command: migrate
