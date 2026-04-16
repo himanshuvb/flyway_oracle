@@ -11,3 +11,6 @@ How to run:
 - Or run Flyway CLI: `flyway -configFiles=conf/flyway.conf migrate`
 
 Ensure `flyway.conf` points at your Oracle instance (SID/service name) and that the Oracle listener is reachable.
+
+
+new addition jenkins file added that uses label and does build and release on agent specified changed docker-compose.yml and added jenkins file accordingly
