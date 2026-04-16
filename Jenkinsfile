@@ -25,7 +25,7 @@ pipeline {
             steps {
                 bat """
                 set TAG=%TAG%
-                docker compose run --rm flyway migrate
+                docker-compose run --rm flyway migrate
                 """
             }
         }
