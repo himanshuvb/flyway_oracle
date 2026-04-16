@@ -1,6 +1,6 @@
 services:
   flyway:
-    image: flyway:rel-1.1.1.1
+    image: flyway:${TAG}
     env_file:
       - ../env/dev.env
     command: migrate
