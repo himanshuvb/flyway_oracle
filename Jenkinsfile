@@ -1,20 +1,32 @@
 pipeline {
     agent { label 'window' }
 
+    environment {
+        TAG = "rel-${env.BUILD_NUMBER}"
+    }
+
     stages {
-        stage('Build & Migrate') {
+
+        stage('Checkout') {
             steps {
-                script {
-                    def tag = "rel-${env.BUILD_NUMBER}"
+                checkout scm
+            }
+        }
 
-                    bat """
-                    cd /d D:\\Oracle_flyway\\oracle-flyway
+        stage('Build Image') {
+            steps {
+                bat """
+                docker build -f docker/Dockerfile -t flyway:%TAG% .
+                """
+            }
+        }
 
-                    docker build -f docker/Dockerfile -t flyway:${tag} .
-
-                    docker compose run --rm flyway migrate
-                    """
-                }
+        stage('Flyway Migration') {
+            steps {
+                bat """
+                set TAG=%TAG%
+                docker compose run --rm flyway migrate
+                """
             }
         }
     }
